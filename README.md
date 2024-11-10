@@ -42,7 +42,12 @@ Esta é uma API para o gerenciamento de usuários utilizando **Node.js**, **Expr
 ```bash
     npm start
 ```
+6. O servidor também pode utilizar outro comando que, sempre que você salvar o projeto, o servidor irá reinicar sem que você precise para e iniciar o servidor manualmente:
+```bash
+    node --watch server.js
+```
 
+Por conta do `app.listen(3000)`.
 O servidor estará rodando em http://localhost:3000.
 
 

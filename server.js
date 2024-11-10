@@ -1,3 +1,13 @@
+/*
+    Criar uma API de Usuários
+        CRUD (Create, Read, Update and Delete)
+
+    - Listar todos os usuários
+    - Criar um usuário
+    - Editar um usuário
+    - Deletar um usuário
+*/
+
 import express from 'express'
 import { PrismaClient } from '@prisma/client'
 
@@ -7,6 +17,7 @@ const app = express()
 app.use(express.json())
 
 
+//     - Listar todos os usuários
 app.get('/usuarios', async (req, res) => {
 
     let users = []
@@ -28,6 +39,7 @@ app.get('/usuarios', async (req, res) => {
     res.status(200).json(users)
 })
 
+//     - Criar um usuário
 app.post('/usuarios', async (req, res) => {
 
     await prisma.user.create({
@@ -42,6 +54,7 @@ app.post('/usuarios', async (req, res) => {
     // res.send('OK, aqui deu certo')
 })
 
+//    - Editar um usuário
 app.put('/usuarios/:id', async (req, res) => {
 
     await prisma.user.update({
@@ -59,6 +72,7 @@ app.put('/usuarios/:id', async (req, res) => {
     res.status(201).json(req.body)
 })
 
+//    - Deletar um usuário
 app.delete('/usuarios/:id', async (req, res) => {
     await prisma.user.delete({
         where: {
@@ -70,14 +84,3 @@ app.delete('/usuarios/:id', async (req, res) => {
 })
 
 app.listen(3000)
-
-/*
-
-    Criar uma API de Usuários
-        CRUD (Create, Read, Update and Delete)
-
-    - Listar todos os usuários
-    - Criar um usuário
-    - Editar um usuário
-    - Deletar um usuário
-*/
